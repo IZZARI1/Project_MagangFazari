@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+  .dashboard-container
+    header.dashboard-header
+      h1 Kopiku ☕
+      p Halo, #{user.email}👑
+      a.logout(href="/logout") Logout
+
+    h2.dashboard-title Selamat Datang, Owner Kopiku!
+
+    .menu-grid
+      a.menu-item(href="/users")
+        img(src="/images/icon-users.png", alt="Kelola User")
+        span Kelola User
+
+      a.menu-item(href="/products")
+        img(src="/images/icon-products.png", alt="Kelola Produk")
+        span Kelola Produk
+
+      a.menu-item(href="/orders")
+        img(src="/images/icon-orders.png", alt="Lihat Order")
+        span Lihat Semua Order
+
+block styles
+  link(rel="stylesheet", href="/stylesheets/superadmin.css")

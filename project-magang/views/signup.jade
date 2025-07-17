@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  .signup-page
+    .signup-container
+      h1 Selamat Datang di Kopiku ☕
+      p(style="margin-bottom: 1rem") Silakan buat akun kamu untuk mulai memesan!
+
+      if error
+        p.error-msg #{error}
+      if info
+        p.info-msg #{info}
+
+      form(method="POST", action="/signup")
+        label(for="email") Email:
+        input(type="email", name="email", required)
+
+        label(for="password") Password:
+        input(type="password", name="password", required)
+
+        button(type="submit") Daftar
+
+      p.daftar
+        | Sudah punya akun? 
+        a(href="/login") Login di sini
+
+block styles
+  link(rel="stylesheet", href="/stylesheets/signup.css")

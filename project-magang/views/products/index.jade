@@ -1,0 +1,35 @@
+extends ../layout
+
+block content 
+  .dashboard-container 
+    header.dashboard-header  
+      h1 Kopiku ☕
+      p Halo, #{user.email}
+      a.logout(href="/logout") Logout
+
+    h2.dashboard-title Daftar Pengguna
+      a.button-add(href="/products/add") + Tambah Produk
+      table.user-table(border="1")
+        thead  
+          tr
+            th ID
+            th Nama
+            th Harga
+            th Aksi
+        tbody
+          each p in products
+            tr
+              td #{p.id}
+              td #{p.name}
+              td Rp#{p.price}
+              td
+                a.btn-edit(href='/products/edit/#{p.id}') Edit 
+                a.btn-delete(href='/products/delete/#{p.id}', onclick="return confirm('Hapus user ini?')") Hapus
+               
+
+  if user && user.role === 'superadmin'
+    a(href="/dashboard/superadmin") ← Kembali ke Dashboard
+  else if user && user.role === 'admin'
+    a(href="/dashboard/admin") ← Kembali ke Dashboard
+block styles
+  link(rel="stylesheet", href="/stylesheets/superadmin.css")

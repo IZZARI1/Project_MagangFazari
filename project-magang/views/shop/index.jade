@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+  .dashboard-container
+    header.dashboard-header
+      h1 Belanja Kopi ☕
+      a.logout(href="/logout") Logout
+
+      h2.dashboard-title Silahkan Dibeli
+
+      table.user-table(border="1")
+      if error
+        p(style="color:red") #{error}
+
+      table(border="1" cellpadding="8")
+        thead
+          tr
+            th Nama Produk
+            th Harga
+            th Jumlah
+            th Aksi
+        tbody
+          each p in products
+            tr
+              form(method="POST", action=`/shop/buy/${p.id}`)
+                td #{p.name}
+                td Rp #{p.price}
+                td
+                  input(type="number", name="quantity", min="1", value="1", required)
+                td
+                  button(type="submit") Beli
+          a.back-button(href="/dashboard/user") ← Kembali ke Dashboard
+
+block styles
+  link(rel="stylesheet", href="/stylesheets/superadmin.css")

@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+  .dashboard-container
+    header.dashboard-header 
+      h1 Kopiku ☕
+      a.logout(href="/logout") Logout
+
+    h2.dashboard-title Selamat Datang!
+      h3 Hai #{user.email} 👋
+      
+      .menu-grid
+        a.menu-item(href="/shop")
+          img(src="/images/logo.png", alt="Belanja Kopi")
+          span Belanja Kopi
+
+        a.menu-item(href="/myorders")
+          img(src="/images/proses.png", alt="Pesanan Saya")
+          span Pesanan Saya
+
+block styles
+  link(rel="stylesheet", href="/stylesheets/superadmin.css")

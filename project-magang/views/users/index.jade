@@ -1,0 +1,55 @@
+//- extends ../layout
+
+//- block content
+//-   h1 Daftar Pengguna
+//-   a(href="/users/add") Tambah Pengguna
+//-   table(border="1")
+//-     thead
+//-       tr
+//-         th No
+//-         th Email
+//-         th Role
+//-         th Aksi
+//-     tbody
+//-       each user, index in users
+//-         tr
+//-           td #{index + 1}
+//-           td #{user.email}
+//-           td #{user.role}
+//-           td
+//-             a(href="/users/edit/#{user.id}") Edit |
+//-             a(href="/users/delete/#{user.id}", onclick="return confirm('Hapus user ini?')") Hapus
+
+extends ../layout
+
+block content
+  .dashboard-container
+    header.dashboard-header
+      h1 Kopiku ☕
+      p Halo, #{user.email}
+      a.logout(href="/logout") Logout
+
+    h2.dashboard-title Daftar Pengguna
+
+    a.button-add(href="/users/add") + Tambah Pengguna
+
+    table.user-table(border="1")
+      thead
+        tr
+          th No
+          th Email
+          th Role
+          th Aksi
+      tbody
+        each user, index in users
+          tr
+            td #{index + 1}
+            td #{user.email}
+            td #{user.role}
+            td
+              a.btn-edit(href='/users/edit/#{user.id}') Edit 
+              a.btn-delete(href='/users/delete/#{user.id}', onclick="return confirm('Hapus user ini?')") Hapus
+    a.back-button(href="/dashboard/superadmin") ← Kembali ke Dashboard
+
+block styles
+  link(rel="stylesheet", href="/stylesheets/superadmin.css")

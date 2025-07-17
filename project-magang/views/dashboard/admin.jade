@@ -1,0 +1,33 @@
+//- extends ../layout
+
+//- block content
+//-   h2 Halo Admin!
+//-   ul
+//-     li: a(href='/products') Manajemen Produk
+//-     li: a(href='/orders') Proses Pesanan
+
+//- a(href="/logout") Logout
+
+extends ../layout
+
+block content
+  .dashboard-container
+    header.dashboard-header
+      h1 Kopiku ☕
+      p Halo, #{user.email}👑
+      a.logout(href="/logout") Logout
+
+    h2.dashboard-title Selamat Datang, Owner Kopiku!
+
+    .menu-grid
+      a.menu-item(href="/products")
+        img(src="/images/icon-management product.png", alt="Manajemen Produk")
+        //- h2 📦
+        span Manajemen Produk
+
+      a.menu-item(href="/orders")
+        img(src="/images/proses.png", alt="Proses Pesanan")
+        span Proses Pesanan
+
+block styles
+  link(rel="stylesheet", href="/stylesheets/superadmin.css")

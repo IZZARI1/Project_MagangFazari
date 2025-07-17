@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background-image: url("/images/bg-cafe.jpg"); /* Sesuaikan dengan file bg kamu */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-page {
+  background-color: rgba(255, 248, 240, 0.95);
+  padding: 3rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.signup-container h1 {
+  font-size: 1.8rem;
+  color: #4e342e;
+  margin-bottom: 0.5rem;
+}
+
+.signup-container p {
+  color: #6d4c41;
+}
+
+.error-msg {
+  color: red;
+  font-weight: bold;
+}
+
+.info-msg {
+  color: green;
+  font-weight: bold;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+label {
+  text-align: left;
+  font-weight: bold;
+  color: #5d4037;
+}
+
+input {
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  border: 1px solid #bcaaa4;
+  font-size: 1rem;
+}
+
+button {
+  background-color: #6d4c41;
+  color: #fff;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #5d4037;
+}
+
+.daftar {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.daftar a {
+  color: #4e342e;
+  font-weight: bold;
+  text-decoration: underline;
+}

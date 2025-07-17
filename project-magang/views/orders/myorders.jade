@@ -1,0 +1,34 @@
+extends ../layout
+
+block content
+  .dashboard-container 
+    header.dashboard-header
+      h1 Pesanan Saya ☕
+      p Halo, #{user.email}
+      a.logout(href="/logout") Logout
+    h2.dashboard-title Dibayar yee
+        table.user-table(border="1")
+        if orders.length === 0
+          p Belum ada pesanan.
+        else
+          table(border="1" cellpadding="8")
+            thead
+              tr
+                th Nama Produk
+                th Jumlah
+                th Harga Satuan
+                th Total
+                th Aksi
+            tbody
+              each o in orders
+                tr
+                  td #{o.name}
+                  td #{o.quantity}
+                  td Rp #{o.price}
+                  td Rp #{o.total}
+                  td
+                    form(method="POST", action="/myorders/delete/" + o.id)
+                      button(type="submit" onclick="return confirm('Yakin ingin hapus pesanan ini?')") Hapus
+            a.back-button(href="/dashboard/user") ← Kata gw sih tambah pesenan
+block styles
+  link(rel="stylesheet", href="/stylesheets/superadmin.css")

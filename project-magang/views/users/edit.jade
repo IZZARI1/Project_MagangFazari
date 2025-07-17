@@ -1,0 +1,47 @@
+//- extends ../layout
+
+//- block content
+//-   h1 Edit Pengguna
+
+//-   form(method="POST", action=`/users/edit/${user.id}`)
+//-     div
+//-       label Email:
+//-       input(type="email", name="email", required, value=user.email)
+
+//-     div
+//-       label Role:
+//-       select(name="role", required)
+//-         option(value="user", selected=(user.role === 'user')) User
+//-         option(value="admin", selected=(user.role === 'admin')) Admin
+//-         option(value="superadmin", selected=(user.role === 'superadmin')) Superadmin
+
+//-     div
+//-       button(type="submit") Simpan
+
+extends ../layout
+
+block content
+  .form-container
+    h1 Edit Pengguna ☕
+
+    form(method="POST", action=`/users/edit/${user.id}`)
+      div.form-group
+        label(for="email") Email:
+        input(type="email", name="email", required, value=user.email)
+      div.form-group
+        label(for="password") Password:
+        input(type="password", name="password", required, value=user.password)
+
+      div.form-group
+        label(for="role") Role:
+        select(name="role", required)
+          option(value="user", selected=(user.role === 'user')) User
+          option(value="admin", selected=(user.role === 'admin')) Admin
+          option(value="superadmin", selected=(user.role === 'superadmin')) Superadmin
+
+      div.form-actions
+        button.btn-submit(type="submit") Simpan
+        a.btn-cancel(href="/users") Batal
+
+block styles
+  link(rel="stylesheet", href="/stylesheets/superadmin.css")

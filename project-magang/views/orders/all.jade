@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+  .dashboard-container
+    header.dashboard-header
+      h1 Kopiku ☕
+      p Halo, #{user.email}
+      a.logout(href="/logout") Logout
+
+    if orders.length === 0
+      p Tidak ada pesanan.
+    else
+    h2.dashboard-title Semua Pesanan Pengguna
+    table.user-table(border="1")
+        thead
+          tr
+            th User
+            th Produk
+            th Jumlah
+            th Harga Satuan
+            th Total
+        tbody
+          each o in orders
+            tr
+              td #{o.email}
+              td #{o.name}
+              td #{o.quantity}
+              td Rp #{o.price}
+              td Rp #{o.total}
+        if user && user.role === 'superadmin'
+          a(href="/dashboard/superadmin") ← Kembali ke Dashboard
+        else if user && user.role === 'admin'
+          a(href="/dashboard/admin") ← Kembali ke Dashboard
+block styles
+  link(rel="stylesheet", href="/stylesheets/superadmin.css")

@@ -1,0 +1,64 @@
+extends layout
+
+block content
+  .login-page 
+    .login-container
+      h1 Selamat Datang di Kopiku ☕
+
+        if error
+          p(style="color: red") #{error}
+
+        form(method="POST", action="/login", id="loginForm")
+          div
+            label Email:
+            input(type="email", name="email", required, id="emailInput", disabled=cooldown)
+          div
+            label Password:
+            input(type="password", name="password", required, id="passwordInput", disabled=cooldown)
+          div
+            .g-recaptcha(data-sitekey=recaptchaSiteKey)
+          div
+            if cooldown
+              button(type="submit", id="loginButton", disabled) Login (Cooldown #{delay}s)
+            else
+              button(type="submit", id="loginButton") Login
+
+        p.signup-link
+          | Belum punya akun? 
+          a(href="/signup") Daftar di sini
+
+        if cooldown
+          .cup-container 
+            //- img(src="/images/", alt="Cangkir", class="cup-image")
+            .coffee-fill(id="coffeeFill")
+              span#countdownText Cooldown #{delay}s
+          script.
+            let delay = #{delay};
+            const btn = document.getElementById('loginButton');
+            const emailInput = document.getElementById('emailInput');
+            const passInput = document.getElementById('passwordInput');
+            const fill = document.getElementById('coffeeFill');
+            const text = document.getElementById('countdownText');
+
+            const maxHeight = 140; // tinggi maksimal layer kopi dalam px
+            const interval = setInterval(() => {
+              delay--;
+              const height = Math.max(0, (delay / #{delay}) * maxHeight);
+              fill.style.height = height + 'px';
+              text.innerText = `Cooldown ${delay}s`;
+              
+              if (delay <= 0) {
+                clearInterval(interval);
+                btn.innerText = 'Login';
+                btn.disabled = false;
+                emailInput.disabled = false;
+                passInput.disabled = false;
+              } else {
+                btn.innerText = `Login (Cooldown ${delay}s)`;
+              }
+            }, 1000);
+
+  block styles 
+    link(rel="stylesheet", href="/stylesheets/login.css")
+  block scripts
+    script(src="https://www.google.com/recaptcha/api.js")

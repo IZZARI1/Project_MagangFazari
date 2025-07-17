@@ -1,0 +1,52 @@
+//- extends ../layout
+
+//- block content
+//-   h1 Tambah Pengguna
+
+//-   form(method="POST", action="/users/add")
+//-     div
+//-       label Email:
+//-       input(type="email", name="email", required)
+
+//-     div
+//-       label Password:
+//-       input(type="password", name="password", required)
+
+//-     div
+//-       label Role:
+//-       select(name="role", required)
+//-         option(value="user") User
+//-         option(value="admin") Admin
+//-         option(value="superadmin") Superadmin
+
+//-     div
+//-       button(type="submit") Tambah
+
+extends ../layout
+
+block content
+  .form-container
+    h1 Tambah Pengguna ☕
+
+    form(method="POST", action="/users/add")
+      div.form-group
+        label(for="email") Email:
+        input(type="email", name="email", required, placeholder="Masukkan email")
+
+      div.form-group
+        label(for="password") Password:
+        input(type="password", name="password", required, placeholder="Masukkan password")
+
+      div.form-group
+        label(for="role") Role:
+        select(name="role", required)
+          option(value="user") User
+          option(value="admin") Admin
+          option(value="superadmin") Superadmin
+
+      div.form-actions
+        button.btn-submit(type="submit") Tambah
+        a.btn-cancel(href="/users") Batal
+
+block styles
+  link(rel="stylesheet", href="/stylesheets/superadmin.css")

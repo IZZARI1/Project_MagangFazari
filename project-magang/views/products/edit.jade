@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+  .form-container
+    h1 Edit Produk ☕
+
+    form(method="POST", action=`/products/edit/${product.id}`)
+      div.form-group
+        label Nama:
+        input(type="text", name="name", required, value=product.name)
+      div.form-group
+        label Harga:
+        input(type="number", name="price", required, value=product.price)
+      div.form-group
+        label Deskripsi:
+        textarea(name="description") #{product.description}
+      div.form-actions
+        button(type="submit") Simpan
+        a.btn-cancel(href="/products") Batal
+
+block styles
+  link(rel="stylesheet", href="/stylesheets/superadmin.css")
+

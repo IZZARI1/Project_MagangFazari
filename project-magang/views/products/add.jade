@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+  .form-container
+    h1 Tambah Produk ☕
+    
+    form(action="/products/add" method="POST")
+      div.form-group  
+        label Nama:
+        input(type="text" name="name" required)
+      
+      div.form-group
+        label Harga:
+        input(type="number" name="price" step="0.01" required)
+      
+      div.form-actions
+        label Deskripsi:
+        textarea(name="description")
+        br
+        button(type="submit") Simpan
+        a.btn-cancel(href="/products") Batal
+
+block styles
+  link(rel="stylesheet", href="/stylesheets/superadmin.css")
+

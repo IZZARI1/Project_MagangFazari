@@ -1,0 +1,28 @@
+//- doctype html
+//- html
+//-   head
+//-     title Dashboard
+//-     link(rel="stylesheet", href="/stylesheets/style.css")
+//-   head
+//-   title Kopiku - Signup
+//-   link(rel='stylesheet', href='/stylesheets/signup.css')
+
+//-   body
+//-     if user
+//-       div(style="text-align: right; padding: 10px")
+//-         | Halo #{user.username} |
+//-         a(href="/logout") Logout
+//-     block content
+
+doctype html
+html
+  head
+    title Kopiku - Dashboard
+    link(rel="stylesheet", href="/stylesheets/style.css")
+    block styles
+  body
+    if user
+      div(style="text-align: right; padding: 10px")
+        | Halo #{user.username} |
+        a(href="/logout") Logout
+    block content
